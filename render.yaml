@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cron-service
+    env: node
+    plan: free                # Or 'standard' for production
+    buildCommand: 'npm install'
+    startCommand: 'npm start'
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Example: Set service account as a Render Secret or variable
+      # - key: GOOGLE_APPLICATION_CREDENTIALS
+      #   value: /etc/secrets/serviceAccountKey.json
+    autoDeploy: true
+
