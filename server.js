@@ -21,9 +21,9 @@ app.get("/wakeup", (req, res) => {
   res.status(200).send("Cron-Service is active!");
 });
 
-app.listen(() => {
+app.listen(8080, () => {
   console.log("Listening on port 8080.");
-}, 8080);
+});
 cron.schedule("* * * * *", async () => {
   console.log("Running Firestore deletion task:", new Date());
   try {
