@@ -26,6 +26,13 @@ cron.schedule('* * * * *', async () => {
 
     await batch.commit();
     console.log(`Deleted ${snapshot.size} expired documents.`);
+
+    await db.collection(COLLECTION).add({
+        type: 'deletion-log',
+        timestamp: new Date(),
+        message: `Deleted cron ran.`
+      });
+      console.log('Logged deletion operation in collection.');
   } catch (err) {
     console.error('Error deleting expired docs:', err);
   }
