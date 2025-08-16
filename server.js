@@ -1,8 +1,11 @@
 /* eslint-disable no-undef */
 const cron = require("node-cron");
 const admin = require("firebase-admin");
-// const serviceAccount = require("./serviceAccountKey.json");
-const serviceAccount = JSON.parse('/etc/secrets/GOOGLE_APPLICATION_CREDENTIALS_JSON');
+const fs = require("fs");
+
+const serviceAccount = JSON.parse(
+  fs.readFileSync("/etc/secrets/GOOGLE_APPLICATION_CREDENTIALS_JSON", "utf8")
+);
 const express = require("express");
 const app = express();
 
