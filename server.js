@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 const cron = require("node-cron");
 const admin = require("firebase-admin");
-const serviceAccount = require("./serviceAccountKey.json");
+// const serviceAccount = require("./serviceAccountKey.json");
+const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
 const express = require("express");
 const app = express();
 
